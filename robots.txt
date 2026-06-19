@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://coolundboigto.github.io/zhmain-leyu-com-cn/sitemap.xml
