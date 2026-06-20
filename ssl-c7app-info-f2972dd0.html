@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>专题：网格之间的叙述 · c7c7.app</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f2f6fa;
+      color: #1b2a38;
+      line-height: 1.6;
+      padding: 2rem 1.25rem;
+    }
+    .page {
+      max-width: 780px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 32px;
+      box-shadow: 0 8px 28px rgba(12, 52, 64, 0.08);
+      padding: 2.4rem 1.8rem 2.8rem;
+    }
+    @media (min-width: 600px) {
+      .page {
+        padding: 3.2rem 3rem 3.8rem;
+      }
+    }
+
+    /* 首屏 · 横幅 */
+    .hero {
+      margin-bottom: 2.6rem;
+      padding-bottom: 1.6rem;
+      border-bottom: 2px solid #d4e7ed;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: #d2e9f0;
+      color: #1c5a6b;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+      margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-size: 2rem;
+      font-weight: 500;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: #0c3c4a;
+    }
+    .hero h1 strong {
+      font-weight: 600;
+      color: #1e7a8c;
+    }
+    .hero p {
+      margin-top: 0.8rem;
+      font-size: 1rem;
+      color: #2f4f5c;
+      border-left: 3px solid #7fb8c9;
+      padding-left: 1rem;
+      background: #f8fbfd;
+      border-radius: 0 8px 8px 0;
+      padding: 0.6rem 1rem;
+    }
+
+    /* 背景卡片 */
+    .background-card {
+      background: #eaf3f7;
+      border-radius: 24px;
+      padding: 1.6rem 1.4rem;
+      margin-bottom: 2.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .background-card h2 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #135a6b;
+      letter-spacing: 0.02em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .background-card h2::before {
+      content: '';
+      display: inline-block;
+      width: 12px;
+      height: 18px;
+      background: #4e9fb0;
+      border-radius: 30px;
+    }
+    .background-card p {
+      font-size: 0.95rem;
+      color: #1f4d5a;
+    }
+
+    /* 三段式 · 网格卡片 */
+    .grid-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.4rem;
+      margin: 2rem 0 2.2rem;
+    }
+    @media (min-width: 540px) {
+      .grid-cards {
+        grid-template-columns: 1fr 1fr;
+      }
+      .grid-cards .card:last-child {
+        grid-column: 1 / -1;
+      }
+    }
+    @media (min-width: 700px) {
+      .grid-cards {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      .grid-cards .card:last-child {
+        grid-column: auto;
+      }
+    }
+    .card {
+      background: #ffffff;
+      border: 1px solid #dbe9ef;
+      border-radius: 20px;
+      padding: 1.3rem 1.2rem 1.4rem;
+      box-shadow: 0 4px 10px rgba(0, 30, 40, 0.03);
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      border-color: #97c5d4;
+      box-shadow: 0 8px 20px rgba(30, 110, 130, 0.08);
+    }
+    .card-icon {
+      display: inline-block;
+      width: 36px;
+      height: 36px;
+      background: #d2e9f2;
+      border-radius: 40%;
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: #116c80;
+    }
+    .card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #0e414f;
+      margin-bottom: 0.3rem;
+    }
+    .card p {
+      font-size: 0.9rem;
+      color: #2e5663;
+      margin-bottom: 0.2rem;
+    }
+    .card .meta {
+      font-size: 0.75rem;
+      color: #6b8d98;
+      margin-top: 0.2rem;
+    }
+
+    /* 页尾 · 提示 */
+    .footer-note {
+      margin-top: 2.4rem;
+      padding-top: 1.6rem;
+      border-top: 1px solid #d8e6ec;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .footer-note .visit-line {
+      background: #edf5f9;
+      border-radius: 60px;
+      padding: 0.8rem 1.4rem;
+      font-size: 0.95rem;
+      color: #163b46;
+      display: inline-flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.2rem;
+    }
+    .footer-note .visit-line a {
+      color: #19768b;
+      font-weight: 550;
+      text-decoration: none;
+      border-bottom: 1.5px solid #7bbacb;
+      padding-bottom: 0.08rem;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .footer-note .visit-line a:hover {
+      color: #0b4f5e;
+      border-bottom-color: #0b4f5e;
+    }
+    .footer-note .faq-mini {
+      background: #f5faff;
+      border-radius: 20px;
+      padding: 0.9rem 1.2rem;
+      font-size: 0.88rem;
+      color: #1f4d58;
+    }
+    .footer-note .faq-mini strong {
+      color: #106b80;
+      font-weight: 550;
+    }
+
+    .footnote {
+      margin-top: 1.6rem;
+      text-align: center;
+      font-size: 0.75rem;
+      color: #7a9ca8;
+    }
+
+    /* 通用 */
+    a {
+      color: #19768b;
+    }
+    a:focus-visible {
+      outline: 2px solid #7ebfcf;
+      outline-offset: 3px;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HERO 横幅 -->
+  <div class="hero">
+    <div class="hero-tag">杂志专题 · 网格内外</div>
+    <h1>在关键词背后，<br>一座<strong> c7c7.app</strong> 的叙述弧</h1>
+    <p>许多索引与线索指向同一个界面。它安静地横跨在数据与浏览之间，既不宣示，也不躲藏。以下是一段围绕它的三段笔记。</p>
+  </div>
+
+  <!-- 背景说明卡片 -->
+  <div class="background-card">
+    <h2>为什么是 c7c7.app ？</h2>
+    <p>每个域名都有一段简短的背景。它被设计成一个轻量的落脚点，没有过度的装饰，也没有复杂的入口。从功能角度看，它提供了一条可被书写的路径。从语境角度看，它代表着一类干净、中继式的网络存在。</p>
+    <p>我们不妨把它看作一座收纳箱：既存放约定，也构成访问的起点。当你输入 <strong>c7c7.app</strong>，你打开的不仅仅是一个地址，更是一段抽象的访问关系。</p>
+  </div>
+
+  <!-- 三段自然介绍 · 网格卡片 -->
+  <div class="grid-cards">
+    <div class="card">
+      <div class="card-icon">◈</div>
+      <h3>第一段 · 索引的质地</h3>
+      <p>关键词背后往往不是单一页面，而是一组微小的结构。c7c7.app 像一枚干净的标签，不干扰内容本身，却让指向变得确切。它属于那种你不太会记住、但每次都能找到的地址。</p>
+      <div class="meta">—— 网络中的定位点</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">◇</div>
+      <h3>第二段 · 轻量与非侵入</h3>
+      <p>没有弹窗，没有过度脚本。这个界面的存在感几乎为零，但它的可用性很高。在快速跳转和临时记录之间，<a href="https://ssl-c7app.com">c7c7.app</a> 保持了一种朴素的平衡。它不强调自己，只是安静承担着中转与呈现。</p>
+      <div class="meta">—— 界面中的背景角色</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">▣</div>
+      <h3>第三段 · 可变的语义场</h3>
+      <p>不同的人看到同一串字符，会产生不同的预期。它可能是一个管理后台，一个临时共享页，或者一段代码的预览。正因为没有固定的叙事，c7c7.app 反而容纳了更多可能性。它的意义由每次访问重新书写。</p>
+      <div class="meta">—— 未完成的用途</div>
+    </div>
+  </div>
+
+  <!-- 页尾访问提示 + 摘要 -->
+  <div class="footer-note">
+    <div class="visit-line">
+      <span>如果你对这个地址感兴趣，可以直接前往</span>
+      <a href="https://ssl-c7app.com">c7c7.app</a>
+      <span>——那里呈现的就是它本身。</span>
+    </div>
+    <div class="faq-mini">
+      <strong>FAQ 摘要</strong> · 这是一个定向服务界面，不收集个人信息，不强制注册。它更适合作为某个特定流程的起点或终点。如需了解更具体的用途，请直接访问并查看页面内容。
+    </div>
+  </div>
+
+  <div class="footnote">
+    —— 网格卡片 · 蓝绿色调 · 安静叙述
+  </div>
+</div>
+</body>
+</html>
