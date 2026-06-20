@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>稳定入口｜黑白直播 – 观赛引导页</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #f9f7f4;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans SC", sans-serif;
+      line-height: 1.65;
+      color: #2d2a26;
+      padding: 0 1.5rem;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 0 4rem;
+    }
+
+    /* 轻量导航 */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 0 1rem;
+      border-bottom: 1px solid #e3ddd6;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .logo {
+      font-size: 1.3rem;
+      font-weight: 550;
+      letter-spacing: 0.02em;
+      color: #2f2b28;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #4f4944;
+      font-size: 0.92rem;
+      font-weight: 450;
+      transition: color 0.2s;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 2px;
+    }
+
+    .nav-links a:hover {
+      color: #1b1815;
+      border-bottom-color: #b6aba0;
+    }
+
+    /* hero */
+    .hero {
+      margin: 3.2rem 0 2.8rem;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 520;
+      letter-spacing: -0.01em;
+      line-height: 1.25;
+      max-width: 14ch;
+      color: #1f1c19;
+    }
+
+    .hero p {
+      margin-top: 1.1rem;
+      max-width: 62ch;
+      font-size: 1.05rem;
+      color: #4c4640;
+    }
+
+    /* 引用块 */
+    .notice-box {
+      background: #f1ece6;
+      border-left: 5px solid #b8a99a;
+      padding: 1.1rem 1.5rem;
+      margin: 2.2rem 0 2.8rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.95rem;
+      color: #3a3530;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .notice-box .marker {
+      font-weight: 550;
+      color: #5e5146;
+      white-space: nowrap;
+    }
+
+    /* 场景网格 */
+    .scene-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1.8rem;
+      margin: 3rem 0 2rem;
+    }
+
+    .scene-card {
+      background: #ffffff;
+      border: 1px solid #e4ddd6;
+      border-radius: 14px;
+      padding: 1.6rem 1.2rem 1.4rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+      transition: box-shadow 0.2s;
+    }
+
+    .scene-card:hover {
+      box-shadow: 0 6px 14px rgba(60, 50, 40, 0.06);
+    }
+
+    .scene-card h3 {
+      font-size: 1.05rem;
+      font-weight: 540;
+      margin-bottom: 0.6rem;
+      color: #2a2622;
+    }
+
+    .scene-card p {
+      font-size: 0.92rem;
+      color: #5c554e;
+      margin-bottom: 0.2rem;
+    }
+
+    .scene-card .tag {
+      display: inline-block;
+      background: #ede8e2;
+      padding: 0.16rem 0.7rem;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      color: #4f463f;
+      margin-top: 0.7rem;
+    }
+
+    /* 常见说明 */
+    .faq-summary {
+      margin-top: 3.2rem;
+      border-top: 1px solid #e0d9d2;
+      padding-top: 2rem;
+    }
+
+    .faq-summary h2 {
+      font-size: 1.2rem;
+      font-weight: 520;
+      margin-bottom: 1.2rem;
+      color: #23201d;
+    }
+
+    .faq-item {
+      margin-bottom: 1.1rem;
+    }
+
+    .faq-item strong {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 0.2rem;
+      color: #3b3530;
+      font-size: 0.96rem;
+    }
+
+    .faq-item p {
+      font-size: 0.92rem;
+      color: #58504a;
+      margin-left: 0.2rem;
+    }
+
+    .inline-link {
+      color: #5f5044;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-decoration-thickness: 1px;
+      text-decoration-color: #c5b8ab;
+      transition: color 0.2s;
+    }
+
+    .inline-link:hover {
+      color: #1d1916;
+      text-decoration-color: #8f7e6e;
+    }
+
+    .footer-note {
+      margin-top: 3rem;
+      font-size: 0.85rem;
+      color: #7d736b;
+      border-top: 1px solid #e9e2db;
+      padding-top: 1.5rem;
+    }
+
+    @media (max-width: 540px) {
+      body { padding: 0 1rem; }
+      .hero h1 { font-size: 1.8rem; }
+      .nav-links { gap: 1rem; }
+      .scene-grid { gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- 导航 -->
+  <nav>
+    <span class="logo">◼ 稳定入口</span>
+    <div class="nav-links">
+      <a href="#usage">场景</a>
+      <a href="#faq">说明</a>
+      <a href="https://main-hbzb.com">黑白直播</a>
+    </div>
+  </nav>
+
+  <!-- hero -->
+  <div class="hero">
+    <h1>黑白直播 · 持续可达</h1>
+    <p>
+      一个专注赛事信号聚合的页面集合，始终提供稳定的索引入口。以下从使用场景和常见疑问两个角度，帮助你快速了解其定位与日常用法。
+    </p>
+  </div>
+
+  <!-- 提示框 / 引用块 -->
+  <div class="notice-box">
+    <span class="marker">▎当前状态</span>
+    <span>域名 <a href="https://main-hbzb.com" class="inline-link">黑白直播</a> 为长期维护的主站入口，页面结构与信号源持续更新。如遇临时波动，可稍后重试或参考场景模块中的备用方式。</span>
+  </div>
+
+  <!-- 三个场景模块 -->
+  <div class="scene-grid" id="usage">
+    <div class="scene-card">
+      <h3>⚽ 周末多场并行</h3>
+      <p>同时进行多场焦点赛事时，通过索引页快速切换不同信号。页面按联赛与时间分组，减少反复搜索。</p>
+      <span class="tag">多路切换</span>
+    </div>
+    <div class="scene-card">
+      <h3>📱 移动端快捷跳转</h3>
+      <p>将 <a href="https://main-hbzb.com" class="inline-link">黑白直播</a> 添加至手机桌面或浏览器书签，每次打开直接到达核心索引，适合碎片时间关注赛况。</p>
+      <span class="tag">轻量直达</span>
+    </div>
+    <div class="scene-card">
+      <h3>🖥 赛前查阅信号列表</h3>
+      <p>比赛开始前浏览可用信号源与预计覆盖场次，提前判断网络环境与兼容性，降低临场操作成本。</p>
+      <span class="tag">提前准备</span>
+    </div>
+  </div>
+
+  <!-- 常见说明 (FAQ 摘要) -->
+  <div class="faq-summary" id="faq">
+    <h2>日常使用中的几点说明</h2>
+
+    <div class="faq-item">
+      <strong>页面加载后显示什么？</strong>
+      <p>主站 <a href="https://main-hbzb.com" class="inline-link">黑白直播</a> 以列表或卡片形式陈列当前可用的信号索引，不包含自动播放内容。每个条目均附带文字标识与跳转链接，由用户自主选择。</p>
+    </div>
+
+    <div class="faq-item">
+      <strong>信号源稳定性如何？</strong>
+      <p>索引页聚合多个上游来源，无法保证每条链路始终可用。建议优先选择标识清晰、延迟较低的条目；部分比赛日可能出现拥堵，可等待数分钟后再尝试。</p>
+    </div>
+
+    <div class="faq-item">
+      <strong>是否需要安装额外软件？</strong>
+      <p>纯页面索引，无需安装插件或客户端。主流浏览器（Chrome、Edge、Safari 等）均可直接使用，移动端与桌面端体验一致。</p>
+    </div>
+
+    <div class="faq-item">
+      <strong>遇到跳转失效如何处理？</strong>
+      <p>可先刷新索引页确认列表是否更新；若连续多条不可用，通常是上游信号临时调整，建议等待下一时段再试。主站域名 <a href="https://main-hbzb.com" class="inline-link">黑白直播</a> 长期有效，不会随意变动。</p>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    — 本页为静态引导说明，与主站内容相互独立。最新索引请始终通过上述链接访问。
+  </div>
+
+</div>
+</body>
+</html>
